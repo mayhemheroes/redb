@@ -1,0 +1,18 @@
+# BuildKit uses <dockerfile>.dockerignore (this file) IN PREFERENCE to the context-root
+# .dockerignore when building `-f mayhem/Dockerfile`. Upstream's root .dockerignore starts
+# with `*` and re-includes only a few dirs (dropping .git AND the fuzz/ crate we build), so
+# we override it here to bake in the FULL repo — including .git history (grader / PATCH tier
+# need it, SPEC §6.2 item 2) and fuzz/ — dropping only local build artifacts / editor cruft.
+
+# Build outputs / local cruft
+**/target/
+*.o
+*.a
+*.so
+*.dylib
+**/__pycache__/
+
+# Editor / OS noise
+.DS_Store
+*.swp
+*~

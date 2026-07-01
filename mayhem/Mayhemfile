@@ -1,0 +1,5 @@
+project: redb
+target: fuzz_redb
+
+cmds:
+  - cmd: /mayhem/fuzz_redb
